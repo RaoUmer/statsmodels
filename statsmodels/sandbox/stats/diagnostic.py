@@ -483,13 +483,12 @@ def acorr_breush_godfrey(results, nlags=None, store=False):
     Notes
     -----
     BG adds lags of residual to exog in the design matrix for the auxiliary
-    regression with residuals as endog,
-    see Greene 12.7.1.
+    regression with residuals as endog, see Greene 12.7.1.
 
     References
     ----------
-    Greene Econometrics, 5th edition
 
+    Greene Econometrics, 5th edition
     '''
 
     x = np.asarray(results.resid)
@@ -548,7 +547,6 @@ def het_breushpagan(resid, exog_het):
         If an array is given in exog, then the residuals are calculated by
         the an OLS regression or resid on exog. In this case resid should
         contain the dependent variable. Exog can be the same as x.
-        TODO: I dropped the exog option, should I add it back?
     exog_het : array_like, (nobs, nvars)
         This contains variables that might create data dependent
         heteroscedasticity.
@@ -590,7 +588,7 @@ def het_breushpagan(resid, exog_het):
     Breush, Pagan article
 
     '''
-
+    # TODO: I dropped the exog option, should I add it back?
     x = np.asarray(exog_het)
     y = np.asarray(resid)**2
     nobs, nvars = x.shape

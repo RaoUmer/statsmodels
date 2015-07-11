@@ -158,7 +158,7 @@ Non-Parametric Tests
 
    sign_test
 
-.. _interrater:   
+.. _interrater:
 
 Interrater Reliability and Agreement
 ------------------------------------
@@ -226,7 +226,6 @@ The following functions are not (yet) public
    ecdf
    get_tukeyQcrit
    homogeneous_subsets
-   line
    maxzero
    maxzerodown
    mcfdr

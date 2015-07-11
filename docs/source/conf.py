@@ -34,14 +34,14 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest',
               'matplotlib.sphinxext.only_directives',
               'IPython.sphinxext.ipython_console_highlighting',
               'IPython.sphinxext.ipython_directive',
-              'numpy_ext.numpydoc',
+              'numpydoc',
               'github' # for GitHub links
               ]
 
 import sphinx
 if sphinx.__version__ == '1.1.3':
-    print ("WARNING: Not building inheritance diagrams on sphinx 1.1.3. "
-           "See https://github.com/statsmodels/statsmodels/issues/1002")
+    print("WARNING: Not building inheritance diagrams on sphinx 1.1.3. "
+          "See https://github.com/statsmodels/statsmodels/issues/1002")
     extensions.remove('sphinx.ext.inheritance_diagram')
 
 # plot_directive is broken on old matplotlib
@@ -136,7 +136,7 @@ pygments_style = 'sphinx'
 if 'htmlhelp' in sys.argv:
     #html_theme = 'statsmodels_htmlhelp'  #doesn't look nice yet
     html_theme = 'default'
-    print '################# using statsmodels_htmlhelp ############'
+    print('################# using statsmodels_htmlhelp ############')
 else:
     html_theme = 'statsmodels'
 
@@ -313,7 +313,8 @@ intersphinx_mapping = {
         'python' : ('http://docs.python.org/3.2', None),
         'pydagogue' : ('http://matthew-brett.github.io/pydagogue/', None),
         'patsy' : ('http://patsy.readthedocs.org/en/latest/', None),
-        'pandas' : ('http://pandas.pydata.org/pandas-docs/dev/', None),
+        'pandas' : (('https://pandas-docs.github.io/pandas-docs-travis/'),
+                    None),
         }
 
 from os.path import dirname, abspath, join
@@ -326,3 +327,14 @@ github_project_url = "https://github.com/statsmodels/statsmodels"
 import json
 example_context = json.load(open('examples/landing.json'))
 html_context = {'examples': example_context }
+
+
+numpydoc_show_class_members = False
+
+import pandas as pd
+pd.set_option("mode.chained_assignment", "raise")
+
+import warnings
+warnings.filterwarnings("ignore",
+                        "This call to matplotlib.use() has no effect",
+                        UserWarning)
